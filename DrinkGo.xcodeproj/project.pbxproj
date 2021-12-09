@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		55D6EAEE276178A30053A704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAED276178A30053A704 /* AppDelegate.swift */; };
 		55D6EAF0276178A30053A704 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAEF276178A30053A704 /* SceneDelegate.swift */; };
-		55D6EAF2276178A30053A704 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAF1276178A30053A704 /* ViewController.swift */; };
+		55D6EAF2276178A30053A704 /* ManufacturersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */; };
 		55D6EAF5276178A30053A704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF3276178A30053A704 /* Main.storyboard */; };
 		55D6EAF7276178A40053A704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF6276178A40053A704 /* Assets.xcassets */; };
 		55D6EAFA276178A40053A704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF8276178A40053A704 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		55D6EAEA276178A20053A704 /* DrinkGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6EAED276178A30053A704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D6EAEF276178A30053A704 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		55D6EAF1276178A30053A704 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersViewController.swift; sourceTree = "<group>"; };
 		55D6EAF4276178A30053A704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		55D6EAF6276178A40053A704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55D6EAF9276178A40053A704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,47 @@
 		55D6EAEC276178A30053A704 /* DrinkGo */ = {
 			isa = PBXGroup;
 			children = (
+				55D6EB0527617D2B0053A704 /* model */,
+				55D6EB0427617D230053A704 /* beerDetail */,
+				55D6EB0327617D140053A704 /* manufacturerDetail */,
+				55D6EB0127617CE90053A704 /* manufacturers */,
 				55D6EAED276178A30053A704 /* AppDelegate.swift */,
 				55D6EAEF276178A30053A704 /* SceneDelegate.swift */,
-				55D6EAF1276178A30053A704 /* ViewController.swift */,
-				55D6EAF3276178A30053A704 /* Main.storyboard */,
 				55D6EAF6276178A40053A704 /* Assets.xcassets */,
 				55D6EAF8276178A40053A704 /* LaunchScreen.storyboard */,
+				55D6EAF3276178A30053A704 /* Main.storyboard */,
 				55D6EAFB276178A40053A704 /* Info.plist */,
 			);
 			path = DrinkGo;
+			sourceTree = "<group>";
+		};
+		55D6EB0127617CE90053A704 /* manufacturers */ = {
+			isa = PBXGroup;
+			children = (
+				55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */,
+			);
+			path = manufacturers;
+			sourceTree = "<group>";
+		};
+		55D6EB0327617D140053A704 /* manufacturerDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = manufacturerDetail;
+			sourceTree = "<group>";
+		};
+		55D6EB0427617D230053A704 /* beerDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = beerDetail;
+			sourceTree = "<group>";
+		};
+		55D6EB0527617D2B0053A704 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D6EAF2276178A30053A704 /* ViewController.swift in Sources */,
+				55D6EAF2276178A30053A704 /* ManufacturersViewController.swift in Sources */,
 				55D6EAEE276178A30053A704 /* AppDelegate.swift in Sources */,
 				55D6EAF0276178A30053A704 /* SceneDelegate.swift in Sources */,
 			);

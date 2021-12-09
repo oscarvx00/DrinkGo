@@ -13,6 +13,8 @@
 		55D6EAF5276178A30053A704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF3276178A30053A704 /* Main.storyboard */; };
 		55D6EAF7276178A40053A704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF6276178A40053A704 /* Assets.xcassets */; };
 		55D6EAFA276178A40053A704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF8276178A40053A704 /* LaunchScreen.storyboard */; };
+		55D8B4692762A7FD008FE530 /* ManufacturersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */; };
+		55D8B46B2762AA2C008FE530 /* ManufacturersTableDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8B46A2762AA2C008FE530 /* ManufacturersTableDTO.swift */; };
 		55FFE89127628F2A006C2EB9 /* ManufacturersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFE89027628F2A006C2EB9 /* ManufacturersViewModel.swift */; };
 		55FFE89327628F50006C2EB9 /* ManufacturersDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFE89227628F50006C2EB9 /* ManufacturersDAO.swift */; };
 		55FFE89527628FAE006C2EB9 /* Manufacturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FFE89427628FAE006C2EB9 /* Manufacturer.swift */; };
@@ -33,6 +35,8 @@
 		55D6EAF6276178A40053A704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55D6EAF9276178A40053A704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55D6EAFB276178A40053A704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersTableViewCell.swift; sourceTree = "<group>"; };
+		55D8B46A2762AA2C008FE530 /* ManufacturersTableDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersTableDTO.swift; sourceTree = "<group>"; };
 		55FFE89027628F2A006C2EB9 /* ManufacturersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersViewModel.swift; sourceTree = "<group>"; };
 		55FFE89227628F50006C2EB9 /* ManufacturersDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersDAO.swift; sourceTree = "<group>"; };
 		55FFE89427628FAE006C2EB9 /* Manufacturer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manufacturer.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			children = (
 				55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */,
 				55FFE8A02762A265006C2EB9 /* ManufacturersTableViewController.swift */,
+				55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */,
 			);
 			path = viewControllers;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 		55FFE88527628E97006C2EB9 /* dataTransferObjects */ = {
 			isa = PBXGroup;
 			children = (
+				55D8B46A2762AA2C008FE530 /* ManufacturersTableDTO.swift */,
 			);
 			path = dataTransferObjects;
 			sourceTree = "<group>";
@@ -312,10 +318,12 @@
 				55FFE89327628F50006C2EB9 /* ManufacturersDAO.swift in Sources */,
 				55FFE89F27629330006C2EB9 /* DatabaseManager.swift in Sources */,
 				55D6EAF2276178A30053A704 /* ManufacturersViewController.swift in Sources */,
+				55D8B46B2762AA2C008FE530 /* ManufacturersTableDTO.swift in Sources */,
 				55FFE8972762900C006C2EB9 /* ManufacturerType.swift in Sources */,
 				55FFE899276291B5006C2EB9 /* Beer.swift in Sources */,
 				55FFE89527628FAE006C2EB9 /* Manufacturer.swift in Sources */,
 				55D6EAEE276178A30053A704 /* AppDelegate.swift in Sources */,
+				55D8B4692762A7FD008FE530 /* ManufacturersTableViewCell.swift in Sources */,
 				55FFE89D276292DC006C2EB9 /* DatabaseConfigProtocol.swift in Sources */,
 				55FFE8A12762A265006C2EB9 /* ManufacturersTableViewController.swift in Sources */,
 				55D6EAF0276178A30053A704 /* SceneDelegate.swift in Sources */,

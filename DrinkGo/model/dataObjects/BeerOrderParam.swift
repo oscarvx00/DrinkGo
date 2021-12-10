@@ -7,10 +7,17 @@
 
 import Foundation
 
-enum BeerOrderParam{
+enum BeerOrderParam : CaseIterable{
     
     case NAME
     case ALCOHOL
     case ENERGY
     
+    var value : String{
+        switch self{
+        case .NAME: return "Name"
+        case .ALCOHOL: return "Alcohol"
+        case .ENERGY: return "Energy"
+        }
+    }
 }

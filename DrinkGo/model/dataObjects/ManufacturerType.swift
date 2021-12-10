@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum ManufacturerType{
+enum ManufacturerType : CaseIterable{
     case NATIONAL
     case INTERNATIONAL
     

@@ -9,6 +9,7 @@ import UIKit
 
 class ManufacturersViewController: UIViewController, ManufacturersTableProtocol {
 
+    let MANUFACTURER_DETAIL_SEGUE_ID = "manufacturerDetailSegue"
     
     @IBOutlet var table : UITableView!
     
@@ -34,8 +35,19 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
     }
     
     func manufacturerSelected(manufacturerUUID: UUID) {
-        print("CLICKED")
+        self.performSegue(withIdentifier: MANUFACTURER_DETAIL_SEGUE_ID, sender: manufacturerUUID)
     }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == MANUFACTURER_DETAIL_SEGUE_ID{
+            guard let uuid = sender as? UUID else {return}
+            let mdvc = segue.destination as! ManufacturerDetailViewController
+            mdvc.selectedUUID = uuid
+        }
+    }
+
 
 
 }

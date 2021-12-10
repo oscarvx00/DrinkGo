@@ -20,4 +20,11 @@ class ManufacturersTableDTO{
         self.logoImage = UIImage(contentsOfFile: manufacturer.logoImageName)
     }
     
+    //TEST METHOD
+    init(name : String){
+        uuid = UUID()
+        self.name = name
+        self.logoImage = nil
+    }
+    
 }

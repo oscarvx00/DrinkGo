@@ -8,7 +8,14 @@
 import Foundation
 
 
-enum ManufacturerType {
+enum ManufacturerType{
     case NATIONAL
     case INTERNATIONAL
+    
+    var header : String {
+        switch self{
+        case .NATIONAL: return "National"
+        case .INTERNATIONAL : return "International"
+        }
+    }
 }

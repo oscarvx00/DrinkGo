@@ -24,4 +24,13 @@ class Manufacturer{
         self.beerList = beerList
     }
     
+    //TEST
+    init(name : String, type : ManufacturerType){
+        self.uuid = UUID()
+        self.name = name
+        self.type = type
+        self.logoImageName = ""
+        self.beerList = []
+    }
+    
 }

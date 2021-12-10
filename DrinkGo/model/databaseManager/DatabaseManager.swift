@@ -7,10 +7,25 @@
 
 import Foundation
 
-struct DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO{
+class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDetailDAO{
+    
+    
+    var manufacturers = [Manufacturer]()
+    
+    static var shared : DatabaseManager = {
+        let instance = DatabaseManager()
+        return instance
+    }()
     
     func openDatabase() -> Bool {
-        abort()
+        //TEST
+        manufacturers = [
+            Manufacturer(name: "TEST 1", type: ManufacturerType.NATIONAL),
+            Manufacturer(name: "TEST 2", type: ManufacturerType.NATIONAL),
+            Manufacturer(name: "TEST 3", type: ManufacturerType.INTERNATIONAL)
+        ]
+        
+        return true
     }
     
     func closeDatabase() {
@@ -18,7 +33,7 @@ struct DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO{
     }
     
     func getManufacturers() -> [Manufacturer] {
-        abort()
+        return self.manufacturers
     }
     
     func insertEmptyManufacturer() -> UUID {
@@ -28,13 +43,22 @@ struct DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO{
     func deleteManufacturers(uuids: [UUID]) {
         abort()
     }
+
+    func getManufacturer(uuid: UUID) -> Manufacturer {
+        abort()
+    }
+
+    func updateManufacturer(manufacturer: Manufacturer) {
+        abort()
+    }
+
+    func insertEmptyBeerToManufacturer(manufacturerUUID: UUID) -> Beer {
+        abort()
+    }
+
+    func deleteBeers(beersUUID: [UUID], manufacturerUUID: UUID) {
+        abort()
+    }
     
-    
-    static var shared : DatabaseManager = {
-        let instance = DatabaseManager()
-        return instance
-    }()
-    
-    private init() {}
     
 }

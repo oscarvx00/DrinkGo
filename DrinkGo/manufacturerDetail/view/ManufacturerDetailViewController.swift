@@ -13,6 +13,7 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     
     var selectedUUID : UUID!
     
+    let viewModel = ManufacturerDetailViewModel()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
@@ -36,6 +37,8 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         
         typeTextField.inputView = manufacturerTypePickerView
         orderTextField.inputView = beerOrderPickerView
+        
+        configureUI(manufacturer: viewModel.getManufacturer(uuid: selectedUUID))
     }
     
     
@@ -49,6 +52,12 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
             orderTextField.resignFirstResponder()
         default: abort()
         }
+    }
+    
+    private func configureUI(manufacturer : ManufacturerDTO){
+        nameTextField.text = manufacturer.name
+        typeTextField.text = manufacturer.type.header
+        //TODO: Show all data
     }
     
 }

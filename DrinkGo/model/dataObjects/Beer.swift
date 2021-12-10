@@ -25,4 +25,14 @@ class Beer {
         self.energy = energy
     }
     
+    //TEST
+    init(name : String, type : String){
+        self.uuid = UUID()
+        self.name = name
+        self.type = type
+        self.alcoholGraduation = 0
+        self.imageName = ""
+        self.energy = 0
+    }
+    
 }

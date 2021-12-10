@@ -45,7 +45,14 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
 
     func getManufacturer(uuid: UUID) -> Manufacturer {
-        abort()
+        for m in manufacturers{
+            if m.uuid == uuid{
+                return m
+            }
+        }
+        
+        //TODO: CHECK ERROR
+        return manufacturers[0]
     }
 
     func updateManufacturer(manufacturer: Manufacturer) {

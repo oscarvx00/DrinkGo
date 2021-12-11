@@ -25,7 +25,9 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
         table.dataSource = tableAdapter
         table.delegate = tableAdapter
         
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         configureUI(manufacturers: viewModel.getManufacturers())
     }
     
@@ -36,9 +38,14 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
     
     func manufacturerSelected(manufacturerUUID: UUID) {
         self.performSegue(withIdentifier: MANUFACTURER_DETAIL_SEGUE_ID, sender: manufacturerUUID)
+        //goToManufacturerDetail(uuid: manufacturerUUID)
     }
     
-
+    func goToManufacturerDetail(uuid : UUID){
+        let mdvc = ManufacturerDetailViewController()
+        mdvc.selectedUUID = uuid
+        self.present(mdvc, animated: true, completion: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == MANUFACTURER_DETAIL_SEGUE_ID{
@@ -48,7 +55,25 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
         }
     }
 
-
-
+    @IBAction func addManufacturerClicked(_ sender: Any) {
+        let uuid = viewModel.addManufacturer()
+        self.performSegue(withIdentifier: MANUFACTURER_DETAIL_SEGUE_ID, sender: uuid)
+    }
+    
+    @IBAction func deleteClicked(_ sender: Any) {
+        let alert = UIAlertController(title: "Warning", message: "All data will be lost", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(action: UIAlertAction!) in abort()}))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteManufacturer(manufacturerUUID: UUID) {
+        table.reloadData()
+        print("DELETE")
+    }
+    
+    
 }
 

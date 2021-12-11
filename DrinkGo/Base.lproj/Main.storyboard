@@ -41,6 +41,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="deleteClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FA2-1V-aHR"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHU-BB-8dI">
                                 <rect key="frame" x="640" y="1075" width="120" height="35"/>
@@ -57,7 +60,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="xHg-4c-Mpq" kind="show" identifier="manufacturerDetailSegue" id="ntG-YK-FgL"/>
+                                    <action selector="addManufacturerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sHj-7V-FyR"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Lpa-mh-pbA">
@@ -97,6 +100,7 @@
                     <navigationItem key="navigationItem" id="f9T-2P-6nb"/>
                     <connections>
                         <outlet property="table" destination="Lpa-mh-pbA" id="QZ9-dl-BJn"/>
+                        <segue destination="xHg-4c-Mpq" kind="show" identifier="manufacturerDetailSegue" id="uyz-Zw-2fo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -191,8 +195,18 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tYY-9P-ioi">
-                                <rect key="frame" x="20" y="433" width="780" height="592"/>
+                                <rect key="frame" x="40" y="433" width="740" height="592"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="manufacturerBeerCell" id="moa-PR-d3p">
+                                        <rect key="frame" x="0.0" y="50" width="740" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="moa-PR-d3p" id="18V-Ug-LTD">
+                                            <rect key="frame" x="0.0" y="0.0" width="740" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0IC-00-p2J"/>
@@ -208,11 +222,11 @@
                             <constraint firstItem="vIG-RX-Z10" firstAttribute="top" secondItem="Bs5-Xi-E1R" secondAttribute="bottom" constant="30" id="Wvh-B4-mcs"/>
                             <constraint firstItem="N9t-Pn-but" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="60" id="bbn-43-SnJ"/>
                             <constraint firstItem="Bs5-Xi-E1R" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="30" id="btk-z8-aBm"/>
-                            <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="tYY-9P-ioi" secondAttribute="trailing" constant="20" id="eUl-El-ikA"/>
+                            <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="tYY-9P-ioi" secondAttribute="trailing" constant="40" id="eUl-El-ikA"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="bottom" secondItem="IHY-QA-bXs" secondAttribute="bottom" constant="50" id="edd-Ve-ik3"/>
                             <constraint firstItem="Nqh-AA-4Hm" firstAttribute="leading" secondItem="gkc-EM-kuI" secondAttribute="trailing" constant="30" id="ghe-ba-I3Q"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="Nqh-AA-4Hm" secondAttribute="trailing" constant="63" id="mxd-CA-PLZ"/>
-                            <constraint firstItem="tYY-9P-ioi" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="20" id="rAe-f4-9mO"/>
+                            <constraint firstItem="tYY-9P-ioi" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="40" id="rAe-f4-9mO"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="qzu-Og-b0L" secondAttribute="trailing" constant="60" id="srf-wm-fsS"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="top" secondItem="qzu-Og-b0L" secondAttribute="top" constant="-10" id="xsP-iP-KVQ"/>
                             <constraint firstItem="Nqh-AA-4Hm" firstAttribute="top" secondItem="qzu-Og-b0L" secondAttribute="bottom" constant="100" id="yY6-mT-pKc"/>
@@ -220,6 +234,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="S3O-YQ-GJ2"/>
                     <connections>
+                        <outlet property="beersTableView" destination="tYY-9P-ioi" id="v2E-Dw-o7E"/>
                         <outlet property="nameTextField" destination="Bs5-Xi-E1R" id="jBI-OP-thI"/>
                         <outlet property="orderTextField" destination="gkc-EM-kuI" id="GxI-ru-Pli"/>
                         <outlet property="typeTextField" destination="vIG-RX-Z10" id="pXG-1D-YlJ"/>

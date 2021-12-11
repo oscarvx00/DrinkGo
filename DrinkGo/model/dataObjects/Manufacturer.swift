@@ -24,13 +24,21 @@ class Manufacturer{
         self.beerList = beerList
     }
     
+    init(){
+        self.uuid = UUID()
+        self.name = ""
+        self.type = ManufacturerType.NATIONAL
+        self.logoImageName = ""
+        self.beerList = []
+    }
+    
     //TEST
-    init(name : String, type : ManufacturerType){
+    init(name : String, type : ManufacturerType, beers : [Beer]){
         self.uuid = UUID()
         self.name = name
         self.type = type
         self.logoImageName = ""
-        self.beerList = []
+        self.beerList = beers
     }
     
 }

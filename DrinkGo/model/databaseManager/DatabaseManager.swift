@@ -20,9 +20,9 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     func openDatabase() -> Bool {
         //TEST
         manufacturers = [
-            Manufacturer(name: "TEST 1", type: ManufacturerType.NATIONAL),
-            Manufacturer(name: "TEST 2", type: ManufacturerType.NATIONAL),
-            Manufacturer(name: "TEST 3", type: ManufacturerType.INTERNATIONAL)
+            Manufacturer(name: "TEST 1", type: ManufacturerType.NATIONAL, beers: [Beer(name: "TEST 1", type: "LAGER"), Beer(name: "TEST 2", type: "BLACK")]),
+            Manufacturer(name: "TEST 2", type: ManufacturerType.NATIONAL, beers: [Beer(name: "TEST 3", type: "TEST")]),
+            Manufacturer(name: "TEST 3", type: ManufacturerType.INTERNATIONAL, beers: [])
         ]
         
         return true
@@ -37,7 +37,9 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
     
     func insertEmptyManufacturer() -> UUID {
-        abort()
+        let manufacturer = Manufacturer()
+        manufacturers.append(manufacturer)
+        return manufacturer.uuid
     }
     
     func deleteManufacturers(uuids: [UUID]) {
@@ -56,7 +58,9 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
 
     func updateManufacturer(manufacturer: Manufacturer) {
-        abort()
+        if let i = manufacturers.firstIndex(where: { $0.uuid == manufacturer.uuid}){
+            manufacturers[i] = manufacturer
+        }
     }
 
     func insertEmptyBeerToManufacturer(manufacturerUUID: UUID) -> Beer {

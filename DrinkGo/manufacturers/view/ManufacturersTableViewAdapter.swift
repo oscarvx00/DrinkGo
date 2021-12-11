@@ -10,6 +10,7 @@ import UIKit
 
 protocol ManufacturersTableProtocol{
     func manufacturerSelected(manufacturerUUID : UUID)
+    func deleteManufacturer(manufacturerUUID : UUID)
 }
 
 class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableViewDelegate{
@@ -53,6 +54,17 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
         let manufacturer = manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row]
         
         parent.manufacturerSelected(manufacturerUUID: manufacturer.uuid)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            parent.deleteManufacturer(manufacturerUUID: manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row].uuid)
+            manufacturers[Array(manufacturers.keys)[indexPath.section]]!.remove(at: indexPath.row)
+        }
     }
     
 }

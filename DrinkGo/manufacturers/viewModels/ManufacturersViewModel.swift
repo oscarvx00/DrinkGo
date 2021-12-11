@@ -36,4 +36,8 @@ class ManufacturersViewModel{
         return map
     }
     
+    func addManufacturer() -> UUID{
+        return manufacturersDAO.insertEmptyManufacturer()
+    }
+    
 }

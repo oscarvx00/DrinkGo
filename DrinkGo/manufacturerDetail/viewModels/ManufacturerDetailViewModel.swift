@@ -19,4 +19,10 @@ class ManufacturerDetailViewModel {
         return ManufacturerDTO(manufacturer: self.manufacturer)
     }
     
+    func updateManufacturer(name : String, type : ManufacturerType){
+        manufacturer.name = name
+        manufacturer.type = type
+        manufacturerDetailDAO.updateManufacturer(manufacturer: manufacturer)
+    }
+    
 }

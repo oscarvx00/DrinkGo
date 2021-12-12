@@ -163,6 +163,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Order">
                                     <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="orderBeersClicked:" destination="xHg-4c-Mpq" eventType="touchUpInside" id="58a-Sy-Im5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-QA-bXs">
                                 <rect key="frame" x="640" y="1075" width="120" height="35"/>
@@ -172,12 +175,17 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                    <color key="baseForegroundColor" systemColor="systemGray6Color"/>
+                                </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addBeerClicked:" destination="xHg-4c-Mpq" eventType="touchUpInside" id="n9g-Ft-Nht"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9t-Pn-but">
                                 <rect key="frame" x="60" y="1075.5" width="120" height="34.5"/>
@@ -238,22 +246,161 @@
                         <outlet property="nameTextField" destination="Bs5-Xi-E1R" id="jBI-OP-thI"/>
                         <outlet property="orderTextField" destination="gkc-EM-kuI" id="GxI-ru-Pli"/>
                         <outlet property="typeTextField" destination="vIG-RX-Z10" id="pXG-1D-YlJ"/>
+                        <segue destination="F5u-bZ-SJk" kind="show" identifier="beerDetailSegue" id="0fY-As-vFw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm8-pQ-sbQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1693.1707317073171" y="69.66101694915254"/>
         </scene>
-        <!--View Controller-->
+        <!--Beer Detail View Controller-->
         <scene sceneID="IHr-36-Ay8">
             <objects>
-                <viewController id="F5u-bZ-SJk" sceneMemberID="viewController">
+                <viewController id="F5u-bZ-SJk" customClass="BeerDetailViewController" customModule="DrinkGo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IQU-8D-Us6">
                         <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lvw-Gt-hYn">
+                                <rect key="frame" x="585" y="68" width="175" height="175"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="18y-eK-JmK"/>
+                                    <constraint firstAttribute="width" constant="175" id="Nu3-Zb-bMf"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="4Pm-sJ-gBa">
+                                <rect key="frame" x="30" y="134" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="yWW-pg-sN8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="svA-yg-d3U">
+                                <rect key="frame" x="30" y="198" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="yav-ie-Kfy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nutritional Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1L-dx-1sV">
+                                <rect key="frame" x="30" y="432" width="143" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Energy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3it-Qo-kAM">
+                                <rect key="frame" x="40" y="498" width="56" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alcohol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STP-8e-PqL">
+                                <rect key="frame" x="40" y="549" width="60" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-1e-hjX">
+                                <rect key="frame" x="144" y="491" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="dDJ-ht-VRL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OL5-VP-QY4">
+                                <rect key="frame" x="144" y="542" width="120" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="4Tk-cn-fRF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hU7-9k-enz">
+                                <rect key="frame" x="640" y="1075" width="120" height="35"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="b5y-wQ-dpK"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                    <color key="baseForegroundColor" systemColor="systemGray6Color"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addBeerClicked:" destination="xHg-4c-Mpq" eventType="touchUpInside" id="dQn-KD-ndt"/>
+                                    <action selector="saveClicked:" destination="F5u-bZ-SJk" eventType="touchUpInside" id="p0E-rM-nvB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="skx-pI-3fx">
+                                <rect key="frame" x="53" y="1075" width="120" height="34.5"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="okf-dz-qJS"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelClicked:" destination="F5u-bZ-SJk" eventType="touchUpInside" id="te0-dk-pHU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="kAW-57-eiS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="d1L-dx-1sV" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="30" id="1fw-Zm-4ig"/>
+                            <constraint firstItem="OL5-VP-QY4" firstAttribute="leading" secondItem="STP-8e-PqL" secondAttribute="trailing" constant="44" id="8GK-uN-HNT"/>
+                            <constraint firstItem="kAW-57-eiS" firstAttribute="top" secondItem="Lvw-Gt-hYn" secondAttribute="top" constant="6" id="ATT-Ze-fhG"/>
+                            <constraint firstItem="4Pm-sJ-gBa" firstAttribute="top" secondItem="kAW-57-eiS" secondAttribute="top" constant="60" id="DCa-3T-2Jn"/>
+                            <constraint firstItem="STP-8e-PqL" firstAttribute="top" secondItem="3it-Qo-kAM" secondAttribute="bottom" constant="30" id="IW5-K1-f1d"/>
+                            <constraint firstItem="svA-yg-d3U" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="30" id="JTl-D7-paS"/>
+                            <constraint firstItem="3it-Qo-kAM" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="40" id="Ncj-EQ-LMu"/>
+                            <constraint firstItem="d1L-dx-1sV" firstAttribute="top" secondItem="svA-yg-d3U" secondAttribute="bottom" constant="200" id="O4e-9w-JdU"/>
+                            <constraint firstItem="kAW-57-eiS" firstAttribute="bottom" secondItem="skx-pI-3fx" secondAttribute="bottom" constant="50" id="Wd2-xV-Iab"/>
+                            <constraint firstItem="3it-Qo-kAM" firstAttribute="top" secondItem="d1L-dx-1sV" secondAttribute="bottom" constant="40" id="ZWj-vz-ZnV"/>
+                            <constraint firstItem="OL5-VP-QY4" firstAttribute="top" secondItem="ZgS-1e-hjX" secondAttribute="bottom" constant="17" id="acy-1D-mOb"/>
+                            <constraint firstItem="ZgS-1e-hjX" firstAttribute="top" secondItem="d1L-dx-1sV" secondAttribute="bottom" constant="33" id="f6g-N6-LWm"/>
+                            <constraint firstItem="ZgS-1e-hjX" firstAttribute="leading" secondItem="3it-Qo-kAM" secondAttribute="trailing" constant="48" id="fNY-Ef-wAV"/>
+                            <constraint firstItem="svA-yg-d3U" firstAttribute="top" secondItem="4Pm-sJ-gBa" secondAttribute="bottom" constant="30" id="fXb-z6-clL"/>
+                            <constraint firstItem="kAW-57-eiS" firstAttribute="trailing" secondItem="Lvw-Gt-hYn" secondAttribute="trailing" constant="60" id="geG-5G-4Bs"/>
+                            <constraint firstItem="skx-pI-3fx" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="60" id="iIp-ie-m1Q"/>
+                            <constraint firstItem="kAW-57-eiS" firstAttribute="bottom" secondItem="hU7-9k-enz" secondAttribute="bottom" constant="50" id="lHF-1B-AWf"/>
+                            <constraint firstItem="kAW-57-eiS" firstAttribute="trailing" secondItem="hU7-9k-enz" secondAttribute="trailing" constant="60" id="lSL-rQ-vai"/>
+                            <constraint firstItem="4Pm-sJ-gBa" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="30" id="n8S-hc-qmD"/>
+                            <constraint firstItem="STP-8e-PqL" firstAttribute="leading" secondItem="kAW-57-eiS" secondAttribute="leading" constant="40" id="uuO-KR-utC"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="sWw-h0-6dF"/>
+                    <connections>
+                        <outlet property="alcoholTextField" destination="OL5-VP-QY4" id="mCY-xB-DDa"/>
+                        <outlet property="energyTextField" destination="ZgS-1e-hjX" id="ZAm-FF-ByD"/>
+                        <outlet property="nameTextField" destination="4Pm-sJ-gBa" id="Xa7-lV-N35"/>
+                        <outlet property="typeTextField" destination="svA-yg-d3U" id="zCD-4s-P4O"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcV-MW-tkn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -38,13 +38,6 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
     
     func manufacturerSelected(manufacturerUUID: UUID) {
         self.performSegue(withIdentifier: MANUFACTURER_DETAIL_SEGUE_ID, sender: manufacturerUUID)
-        //goToManufacturerDetail(uuid: manufacturerUUID)
-    }
-    
-    func goToManufacturerDetail(uuid : UUID){
-        let mdvc = ManufacturerDetailViewController()
-        mdvc.selectedUUID = uuid
-        self.present(mdvc, animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,8 +63,7 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
     }
     
     func deleteManufacturer(manufacturerUUID: UUID) {
-        table.reloadData()
-        print("DELETE")
+        viewModel.deleteManufacturer(uuid: manufacturerUUID)
     }
     
     

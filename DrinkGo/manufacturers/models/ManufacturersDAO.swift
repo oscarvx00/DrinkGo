@@ -12,6 +12,6 @@ protocol ManufacturersDAO{
 
     func getManufacturers() -> [Manufacturer]
     func insertEmptyManufacturer() -> UUID
-    func deleteManufacturers(uuids : [UUID])
+    func deleteManufacturer(uuid : UUID)
     
 }

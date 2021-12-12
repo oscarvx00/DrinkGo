@@ -7,8 +7,8 @@
 
 import Foundation
 
-class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDetailDAO{
-    
+class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDetailDAO, BeerDetailDAO{
+
     
     var manufacturers = [Manufacturer]()
     
@@ -42,8 +42,10 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
         return manufacturer.uuid
     }
     
-    func deleteManufacturers(uuids: [UUID]) {
-        abort()
+    func deleteManufacturer(uuid: UUID) {
+        if let index = manufacturers.firstIndex(where: {$0.uuid == uuid}){
+            manufacturers.remove(at: index)
+        }
     }
 
     func getManufacturer(uuid: UUID) -> Manufacturer {
@@ -64,12 +66,40 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
 
     func insertEmptyBeerToManufacturer(manufacturerUUID: UUID) -> Beer {
-        abort()
+        let beer = Beer(name: "Name...", type: "Type...")
+        if let index = manufacturers.firstIndex(where: {$0.uuid == manufacturerUUID}){
+            manufacturers[index].beerList.append(beer)
+        }
+        return beer
     }
 
-    func deleteBeers(beersUUID: [UUID], manufacturerUUID: UUID) {
-        abort()
+    func deleteBeer(beerUUID: UUID, manufacturerUUID: UUID) {
+        if let parentIndex = manufacturers.firstIndex(where: {$0.uuid == manufacturerUUID}){
+            if let beerIndex = manufacturers[parentIndex].beerList.firstIndex(where: {$0.uuid == beerUUID}){
+                manufacturers[parentIndex].beerList.remove(at: beerIndex)
+            }
+        }
     }
+    
+    func getBeer(beerUUID: UUID, manufacturerUUID: UUID) -> Beer {
+        if let parent = manufacturers.first(where: {$0.uuid == manufacturerUUID}){
+            if let beer = parent.beerList.first(where: {$0.uuid == beerUUID}){
+                return beer
+            }
+        }
+        
+        //ERROR CASE
+        return manufacturers[0].beerList[0]
+    }
+    
+    func updateBeer(beer: Beer, manufacturerUUID: UUID) {
+        if let parentIndex = manufacturers.firstIndex(where: {$0.uuid == manufacturerUUID}){
+            if let beerIndex = manufacturers[parentIndex].beerList.firstIndex(where: {$0.uuid == beer.uuid}){
+                manufacturers[parentIndex].beerList[beerIndex] = beer
+            }
+        }
+    }
+    
     
     
 }

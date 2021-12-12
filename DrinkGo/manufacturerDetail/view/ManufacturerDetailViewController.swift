@@ -11,6 +11,8 @@ import UIKit
 
 class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPickerViewAdapterProtocol, ManufacturerBeerTableProtocol{
     
+    let BEER_DETAIL_SEGUE_ID = "beerDetailSegue"
+    
     var selectedUUID : UUID!
     
     let viewModel = ManufacturerDetailViewModel()
@@ -88,7 +90,14 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     }
     
     func beerSelected(uuid: UUID) {
-        
+        var uuids = [UUID]()
+        uuids.append(uuid)
+        uuids.append(viewModel.manufacturer.uuid)
+        self.performSegue(withIdentifier: BEER_DETAIL_SEGUE_ID, sender: uuids)
+    }
+    
+    func deleteBeer(uuid: UUID) {
+        viewModel.deleteBeer(uuid: uuid)
     }
     
     private func saveState(){
@@ -101,6 +110,25 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         viewModel.updateManufacturer(name: name!, type: type)
     }
     
+    @IBAction func addBeerClicked(_ sender: Any) {
+        let beer = viewModel.addBeer()
+        tableAdapter.beers.append(beer)
+        beersTableView.beginUpdates()
+        beersTableView.insertRows(at: [IndexPath.init(row: tableAdapter.beers.count-1, section: 0)], with: .right)
+        beersTableView.endUpdates()
+    }
     
+    @IBAction func orderBeersClicked(_ sender: Any) {
+        configureBeersListUI(data: viewModel.orderBeersBy(orderParam: selectedBeerOrder))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == BEER_DETAIL_SEGUE_ID{
+            guard let uuid = sender as? [UUID] else {return}
+            let bdvc = segue.destination as! BeerDetailViewController
+            bdvc.selectedManufacturerUUID = uuid[0]
+            bdvc.selectedBeerUUID = uuid[1]
+        }
+    }
 }
 

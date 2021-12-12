@@ -62,8 +62,10 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
-            parent.deleteManufacturer(manufacturerUUID: manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row].uuid)
+            let uuid = manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row].uuid
             manufacturers[Array(manufacturers.keys)[indexPath.section]]!.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            parent.deleteManufacturer(manufacturerUUID: uuid)
         }
     }
     

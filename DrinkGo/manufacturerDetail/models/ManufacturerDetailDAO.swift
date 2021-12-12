@@ -12,6 +12,6 @@ protocol ManufacturerDetailDAO{
     func getManufacturer(uuid : UUID) -> Manufacturer
     func updateManufacturer(manufacturer : Manufacturer)
     func insertEmptyBeerToManufacturer(manufacturerUUID : UUID) -> Beer
-    func deleteBeers(beersUUID : [UUID], manufacturerUUID : UUID)
+    func deleteBeer(beerUUID : UUID, manufacturerUUID : UUID)
     
 }

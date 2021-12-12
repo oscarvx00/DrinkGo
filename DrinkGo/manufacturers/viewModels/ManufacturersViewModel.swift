@@ -17,12 +17,6 @@ class ManufacturersViewModel{
     }
     
     func getManufacturers() -> [ManufacturerType : [ManufacturersTableDTO]] {
-        /*TEST METHOD
-        var map = [ManufacturerType : [ManufacturersTableDTO]]()
-        map[ManufacturerType.NATIONAL] = [ManufacturersTableDTO(name: "TEST")]
-        map[ManufacturerType.INTERNATIONAL] = [ManufacturersTableDTO(name: "TEST 2")]
-        
-        return map*/
         
         let manufacturers = manufacturersDAO.getManufacturers()
         
@@ -38,6 +32,10 @@ class ManufacturersViewModel{
     
     func addManufacturer() -> UUID{
         return manufacturersDAO.insertEmptyManufacturer()
+    }
+    
+    func deleteManufacturer(uuid : UUID){
+        manufacturersDAO.deleteManufacturer(uuid: uuid)
     }
     
 }

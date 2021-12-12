@@ -11,6 +11,7 @@ import UIKit
 
 protocol ManufacturerBeerTableProtocol{
     func beerSelected(uuid : UUID)
+    func deleteBeer(uuid : UUID)
 }
 
 class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITableViewDataSource{
@@ -45,5 +46,21 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
         
         parent.beerSelected(uuid: beer.uuid)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle == .delete){
+            let uuid = beers[indexPath.row].uuid
+            beers.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.endUpdates()
+            parent.deleteBeer(uuid: uuid)
+        }
+    }
+    
     
 }

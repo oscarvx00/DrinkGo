@@ -32,11 +32,6 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
     
     private func readDefaultData(){
-        /*manufacturers = [
-            Manufacturer(name: "TEST 1", type: ManufacturerType.NATIONAL, beers: [Beer(name: "TEST 1", type: "LAGER"), Beer(name: "TEST 2", type: "BLACK")]),
-            Manufacturer(name: "TEST 2", type: ManufacturerType.NATIONAL, beers: [Beer(name: "TEST 3", type: "TEST")]),
-            Manufacturer(name: "TEST 3", type: ManufacturerType.INTERNATIONAL, beers: [])
-        ]*/
         
         if let defaultDataFileUrl = Bundle.main.url(forResource: "defaultData", withExtension: "txt"){
             do{
@@ -57,9 +52,6 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
             
             let data = try String(contentsOf: fileURL, encoding: .utf8).data(using: .utf8)!
             
-            //let test = try String(contentsOf: fileURL, encoding: .utf8)
-            //print(test)
-            
             manufacturers = try JSONDecoder().decode([Manufacturer].self, from: data)
             
         } catch let error{
@@ -77,12 +69,10 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
             if !fileManager.fileExists(atPath: dataDirURL.path){
                 try fileManager.createDirectory(atPath: dataDirURL.path, withIntermediateDirectories: true, attributes: nil)
             }
-                
             
         } catch let error{
             print(error.localizedDescription)
         }
-        
     }
     
     func closeDatabase() {
@@ -104,22 +94,7 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
             
             try jsonString.write(to: fileURL, atomically: false, encoding: .utf8)
         } catch let error{
-            print(error.localizedDescription)
-        }
-        //testDataWritten()
-	
-    }
-    
-    private func testDataWritten(){
-        do{
-            let fileURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                .appendingPathComponent(storageDirectoryName)
-                .appendingPathComponent(storageFileName)
-            
-            let data = try String(contentsOf: fileURL, encoding: .utf8)
-            print(data)
-        } catch let error{
-            print(error.localizedDescription)
+            print("CLOSE DATABASE ERROR: \(error.localizedDescription)")
         }
     }
     
@@ -190,7 +165,4 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
             }
         }
     }
-    
-    
-    
 }

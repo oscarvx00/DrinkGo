@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class BeerDetailViewModel{
@@ -23,11 +24,14 @@ class BeerDetailViewModel{
         return BeerDTO(beer: beer)
     }
     
-    func updateBeer(name : String, type : String, alcohol : Float, energy : Float){
+    func updateBeer(name : String, type : String, alcohol : Float, energy : Float, image : UIImage?){
         beer.name = name
         beer.type = type
         beer.alcoholGraduation = alcohol
         beer.energy = energy
+        if image != nil && image != BeerDTO(beer: beer).image{
+            beer.imageName = beerDetailDAO.saveImage(image: image!, oldImageName: beer.imageName)
+        }
         
         beerDetailDAO.updateBeer(beer: beer, manufacturerUUID: manufacturerUUID)
     }

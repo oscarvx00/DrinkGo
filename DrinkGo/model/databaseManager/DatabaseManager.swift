@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDetailDAO, BeerDetailDAO{
 
     let storageFileName = "drinkgoData.txt"
     let storageDirectoryName = "data"
+    
+    let imagesDirectoryName = "images"
     
     let fileManager = FileManager.default
     
@@ -70,6 +73,12 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
                 try fileManager.createDirectory(atPath: dataDirURL.path, withIntermediateDirectories: true, attributes: nil)
             }
             
+            //Create images directory
+            let imagesDirURL = documentsPath.appendingPathComponent(imagesDirectoryName)
+            if !fileManager.fileExists(atPath: imagesDirURL.path){
+                try fileManager.createDirectory(atPath: imagesDirURL.path, withIntermediateDirectories: true, attributes: nil)
+            }
+            
         } catch let error{
             print(error.localizedDescription)
         }
@@ -110,6 +119,7 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     
     func deleteManufacturer(uuid: UUID) {
         if let index = manufacturers.firstIndex(where: {$0.uuid == uuid}){
+            deleteImage(imageName: manufacturers[index].logoImageName)
             manufacturers.remove(at: index)
         }
     }
@@ -142,6 +152,7 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     func deleteBeer(beerUUID: UUID, manufacturerUUID: UUID) {
         if let parentIndex = manufacturers.firstIndex(where: {$0.uuid == manufacturerUUID}){
             if let beerIndex = manufacturers[parentIndex].beerList.firstIndex(where: {$0.uuid == beerUUID}){
+                deleteImage(imageName: manufacturers[parentIndex].beerList[beerIndex].imageName)
                 manufacturers[parentIndex].beerList.remove(at: beerIndex)
             }
         }
@@ -163,6 +174,47 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
             if let beerIndex = manufacturers[parentIndex].beerList.firstIndex(where: {$0.uuid == beer.uuid}){
                 manufacturers[parentIndex].beerList[beerIndex] = beer
             }
+        }
+    }
+    
+    func saveImage(image: UIImage, oldImageName : String) -> String {
+        
+        let imageName = "\(UUID().uuidString).png"
+        
+        do{
+            let fileUrl = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent(imagesDirectoryName)
+                .appendingPathComponent(imageName)
+            
+            if let data = image.pngData(){
+                try data.write(to: fileUrl)
+            } else{
+                return ""
+            }
+            
+        } catch let error{
+            print(error.localizedDescription)
+            
+            return ""
+        }
+        
+        if !oldImageName.isEmpty{
+            deleteImage(imageName: oldImageName)
+        }
+        
+        return imageName
+    }
+    
+    private func deleteImage(imageName : String){
+        
+        do{
+            let fileURL = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                .appendingPathComponent(imagesDirectoryName)
+                .appendingPathComponent(imageName)
+            
+            try fileManager.removeItem(atPath: fileURL.path)
+        } catch let error{
+            print(error.localizedDescription)
         }
     }
 }

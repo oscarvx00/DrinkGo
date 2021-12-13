@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ManufacturerDetailDAO{
     
@@ -13,5 +14,6 @@ protocol ManufacturerDetailDAO{
     func updateManufacturer(manufacturer : Manufacturer)
     func insertEmptyBeerToManufacturer(manufacturerUUID : UUID) -> Beer
     func deleteBeer(beerUUID : UUID, manufacturerUUID : UUID)
+    func saveImage(image: UIImage, oldImageName : String) -> String
     
 }

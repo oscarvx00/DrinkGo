@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class ManufacturerDetailViewModel {
@@ -19,17 +20,26 @@ class ManufacturerDetailViewModel {
         return ManufacturerDTO(manufacturer: self.manufacturer)
     }
     
-    func updateManufacturer(name : String, type : ManufacturerType){
+    func updateManufacturer(name : String, type : ManufacturerType, image : UIImage?){
         manufacturer.name = name
         manufacturer.type = type
+        if image != nil && ManufacturerDTO(manufacturer: manufacturer).logoImage != image{ //TEST IMAGE CHANGED
+            manufacturer.logoImageName = manufacturerDetailDAO.saveImage(image: image!, oldImageName: manufacturer.logoImageName)
+        }
+        
         manufacturerDetailDAO.updateManufacturer(manufacturer: manufacturer)
     }
     
     func addBeer() -> BeerTableDTO{
-        return BeerTableDTO(beer: manufacturerDetailDAO.insertEmptyBeerToManufacturer(manufacturerUUID: manufacturer.uuid))
+        let beer  = manufacturerDetailDAO.insertEmptyBeerToManufacturer(manufacturerUUID: manufacturer.uuid)
+        manufacturer.beerList.append(beer)
+        return BeerTableDTO(beer: beer)
     }
     
     func deleteBeer(uuid : UUID){
+        if let beerIndex = manufacturer.beerList.firstIndex(where: {$0.uuid == uuid}){
+            manufacturer.beerList.remove(at: beerIndex)
+        }
         manufacturerDetailDAO.deleteBeer(beerUUID: uuid, manufacturerUUID: manufacturer.uuid)
     }
     

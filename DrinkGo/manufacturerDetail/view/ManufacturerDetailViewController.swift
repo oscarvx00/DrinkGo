@@ -9,18 +9,20 @@ import Foundation
 import UIKit
 
 
-class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPickerViewAdapterProtocol, ManufacturerBeerTableProtocol{
+class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPickerViewAdapterProtocol, ManufacturerBeerTableProtocol, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     let BEER_DETAIL_SEGUE_ID = "beerDetailSegue"
     
     var selectedUUID : UUID!
     
     let viewModel = ManufacturerDetailViewModel()
+    let imagePicker = UIImagePickerController()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var orderTextField: UITextField!
     @IBOutlet weak var beersTableView: UITableView!
+    @IBOutlet weak var imageView: UIImageView!
     
     let manufacturerTypePickerView = UIPickerView()
     let beerOrderPickerView = UIPickerView()
@@ -50,7 +52,12 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         beersTableView.delegate = tableAdapter
         beersTableView.dataSource = tableAdapter
         
-        //let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        imageView.addGestureRecognizer(tapGR)
+        imageView.isUserInteractionEnabled = true
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
         
         
         orderTextField.text = selectedBeerOrder.value
@@ -85,6 +92,9 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         typeTextField.text = manufacturer.type.header
         selectedManufacturerType = manufacturer.type
         configureBeersListUI(data: manufacturer.beers)
+        if manufacturer.logoImage != nil{
+            imageView.image = manufacturer.logoImage
+        }
     }
     
     private func configureBeersListUI(data : [BeerTableDTO]){
@@ -110,7 +120,7 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         if(name != nil && name!.isEmpty){
             name = "NO NAME"
         }
-        viewModel.updateManufacturer(name: name!, type: type)
+        viewModel.updateManufacturer(name: name!, type: type, image: imageView.image)
     }
     
     @IBAction func addBeerClicked(_ sender: Any) {
@@ -132,6 +142,19 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
             bdvc.selectedManufacturerUUID = uuid[0]
             bdvc.selectedBeerUUID = uuid[1]
         }
+    }
+    
+    @objc func imageTapped(sender : UITapGestureRecognizer){
+        if sender.state == .ended{
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage{
+            imageView.image = image
+        }
+        dismiss(animated: true, completion: nil)
     }
 }
 

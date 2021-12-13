@@ -243,6 +243,7 @@
                     <navigationItem key="navigationItem" id="S3O-YQ-GJ2"/>
                     <connections>
                         <outlet property="beersTableView" destination="tYY-9P-ioi" id="v2E-Dw-o7E"/>
+                        <outlet property="imageView" destination="qzu-Og-b0L" id="yax-ft-20i"/>
                         <outlet property="nameTextField" destination="Bs5-Xi-E1R" id="jBI-OP-thI"/>
                         <outlet property="orderTextField" destination="gkc-EM-kuI" id="GxI-ru-Pli"/>
                         <outlet property="typeTextField" destination="vIG-RX-Z10" id="pXG-1D-YlJ"/>

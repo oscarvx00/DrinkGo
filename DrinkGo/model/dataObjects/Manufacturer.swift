@@ -8,7 +8,7 @@
 import Foundation
 
 
-class Manufacturer{
+class Manufacturer : Codable{
     
     var uuid : UUID
     var name : String

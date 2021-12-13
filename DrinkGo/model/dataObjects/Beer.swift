@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Beer {
+class Beer : Codable{
     
     var uuid : UUID
     var name : String

@@ -398,6 +398,7 @@
                     <connections>
                         <outlet property="alcoholTextField" destination="OL5-VP-QY4" id="mCY-xB-DDa"/>
                         <outlet property="energyTextField" destination="ZgS-1e-hjX" id="ZAm-FF-ByD"/>
+                        <outlet property="imageView" destination="Lvw-Gt-hYn" id="NEq-ts-iPK"/>
                         <outlet property="nameTextField" destination="4Pm-sJ-gBa" id="Xa7-lV-N35"/>
                         <outlet property="typeTextField" destination="svA-yg-d3U" id="zCD-4s-P4O"/>
                     </connections>

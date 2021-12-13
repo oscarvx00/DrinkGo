@@ -50,6 +50,9 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         beersTableView.delegate = tableAdapter
         beersTableView.dataSource = tableAdapter
         
+        //let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        
+        
         orderTextField.text = selectedBeerOrder.value
         
     }

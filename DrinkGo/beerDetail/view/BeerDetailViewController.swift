@@ -9,20 +9,30 @@ import Foundation
 import UIKit
 
 
-class BeerDetailViewController : UIViewController{
+class BeerDetailViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var selectedManufacturerUUID : UUID!
     var selectedBeerUUID : UUID!
     
     let viewModel = BeerDetailViewModel()
+    var imagePicker = UIImagePickerController()
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var energyTextField: UITextField!
     @IBOutlet weak var alcoholTextField: UITextField!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func loadView() {
         super.loadView()
+        
+        let tapGR = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        imageView.addGestureRecognizer(tapGR)
+        imageView.isUserInteractionEnabled = true
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .savedPhotosAlbum
+        //imagePicker.allowsEditing = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,6 +70,19 @@ class BeerDetailViewController : UIViewController{
     }
     @IBAction func cancelClicked(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imageTapped(sender : UITapGestureRecognizer){
+        if sender.state == .ended{
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[.originalImage] as? UIImage{
+            imageView.image = image
+        }
         dismiss(animated: true, completion: nil)
     }
 }

@@ -27,33 +27,15 @@
                                 </constraints>
                                 <imageReference key="image" image="Logo"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8I0-ie-dFG">
-                                <rect key="frame" x="60" y="1075.5" width="120" height="34.5"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="vqh-uh-IXJ"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemGray6Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="deleteClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FA2-1V-aHR"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yHU-BB-8dI">
-                                <rect key="frame" x="640" y="1075" width="120" height="35"/>
+                                <rect key="frame" x="290" y="1075" width="240" height="35"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ymv-Ci-g7C"/>
+                                    <constraint firstAttribute="width" constant="240" id="ymv-Ci-g7C"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Añadir fabricante"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -74,9 +56,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="780" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l4T-Vl-WzU">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="l4T-Vl-WzU">
                                                     <rect key="frame" x="29" y="0.0" width="70" height="70"/>
-                                                    <color key="backgroundColor" systemColor="linkColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="bde-L1-iaK"/>
                                                         <constraint firstAttribute="height" constant="70" id="jul-Nx-DbF"/>
@@ -116,11 +97,9 @@
                             <constraint firstItem="fDv-op-bhY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Xj-gd-56G"/>
                             <constraint firstItem="Lpa-mh-pbA" firstAttribute="top" secondItem="fDv-op-bhY" secondAttribute="bottom" constant="40" id="Atf-AT-YcU"/>
                             <constraint firstItem="Lpa-mh-pbA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JAC-ee-Dwp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8I0-ie-dFG" secondAttribute="bottom" constant="50" id="ZMS-rp-gpQ"/>
-                            <constraint firstItem="8I0-ie-dFG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="cPQ-FQ-X7y"/>
-                            <constraint firstItem="Lpa-mh-pbA" firstAttribute="bottom" secondItem="8I0-ie-dFG" secondAttribute="top" constant="-50" id="cYp-mv-Iw2"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yHU-BB-8dI" secondAttribute="trailing" constant="60" id="dAU-GM-TbA"/>
+                            <constraint firstItem="yHU-BB-8dI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SiY-C2-tT1"/>
                             <constraint firstItem="Lpa-mh-pbA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ka6-vM-w00"/>
+                            <constraint firstItem="yHU-BB-8dI" firstAttribute="top" secondItem="Lpa-mh-pbA" secondAttribute="bottom" constant="49.5" id="osC-RX-mld"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lpa-mh-pbA" secondAttribute="trailing" constant="20" id="qZA-nB-QtP"/>
                             <constraint firstItem="fDv-op-bhY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="zTv-7E-XBy"/>
                         </constraints>
@@ -188,7 +167,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Order">
+                                <buttonConfiguration key="configuration" style="plain" title="Ordenar">
                                     <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -196,14 +175,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHY-QA-bXs">
-                                <rect key="frame" x="640" y="1075" width="120" height="35"/>
+                                <rect key="frame" x="290" y="1075" width="240" height="35"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="vMj-U5-GCI"/>
+                                    <constraint firstAttribute="width" constant="240" id="vMj-U5-GCI"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Add">
+                                <buttonConfiguration key="configuration" style="plain" title="Añadir cerveza">
                                     <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -214,21 +193,6 @@
                                 <connections>
                                     <action selector="addBeerClicked:" destination="xHg-4c-Mpq" eventType="touchUpInside" id="n9g-Ft-Nht"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9t-Pn-but">
-                                <rect key="frame" x="60" y="1075.5" width="120" height="34.5"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="0bt-GN-5kr"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemGray6Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Delete"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tYY-9P-ioi">
                                 <rect key="frame" x="40" y="433" width="740" height="592"/>
@@ -275,14 +239,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="vIG-RX-Z10" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="30" id="7aL-PI-5gN"/>
+                            <constraint firstItem="IHY-QA-bXs" firstAttribute="top" secondItem="tYY-9P-ioi" secondAttribute="bottom" constant="50" id="DTe-1h-azN"/>
                             <constraint firstItem="gkc-EM-kuI" firstAttribute="top" secondItem="qzu-Og-b0L" secondAttribute="bottom" constant="100" id="Jr4-0S-vqR"/>
                             <constraint firstItem="IHY-QA-bXs" firstAttribute="top" secondItem="tYY-9P-ioi" secondAttribute="bottom" constant="50" id="LH8-uG-C3F"/>
                             <constraint firstItem="Bs5-Xi-E1R" firstAttribute="top" secondItem="0IC-00-p2J" secondAttribute="top" constant="60" id="R0g-3C-fvd"/>
-                            <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="IHY-QA-bXs" secondAttribute="trailing" constant="60" id="SRG-KH-6Sn"/>
-                            <constraint firstItem="0IC-00-p2J" firstAttribute="bottom" secondItem="N9t-Pn-but" secondAttribute="bottom" constant="50" id="Vj4-Eb-CDn"/>
                             <constraint firstItem="tYY-9P-ioi" firstAttribute="top" secondItem="gkc-EM-kuI" secondAttribute="bottom" constant="40" id="WFs-Rb-JPO"/>
                             <constraint firstItem="vIG-RX-Z10" firstAttribute="top" secondItem="Bs5-Xi-E1R" secondAttribute="bottom" constant="30" id="Wvh-B4-mcs"/>
-                            <constraint firstItem="N9t-Pn-but" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="60" id="bbn-43-SnJ"/>
+                            <constraint firstItem="IHY-QA-bXs" firstAttribute="centerX" secondItem="Vsi-lf-22T" secondAttribute="centerX" id="ZL9-cC-8zy"/>
                             <constraint firstItem="Bs5-Xi-E1R" firstAttribute="leading" secondItem="0IC-00-p2J" secondAttribute="leading" constant="30" id="btk-z8-aBm"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="trailing" secondItem="tYY-9P-ioi" secondAttribute="trailing" constant="40" id="eUl-El-ikA"/>
                             <constraint firstItem="0IC-00-p2J" firstAttribute="bottom" secondItem="IHY-QA-bXs" secondAttribute="bottom" constant="50" id="edd-Ve-ik3"/>
@@ -392,7 +355,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Save">
+                                <buttonConfiguration key="configuration" style="plain" title="Aceptar">
                                     <color key="baseForegroundColor" systemColor="systemGray6Color"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
@@ -413,7 +376,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancelar"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>

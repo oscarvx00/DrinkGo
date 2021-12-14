@@ -33,10 +33,11 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "manufacturerBeerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "manufacturerBeerCell", for: indexPath) as! ManufacturerBeersTableViewCell
         
         let beer = beers[indexPath.row]
-        cell.textLabel?.text = beer.name
+        cell.cellLabel?.text = beer.name
+        cell.cellImageView?.image = beer.image
         
         return cell
     }
@@ -44,7 +45,7 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let beer = beers[indexPath.row]
         
-        parent.beerSelected(uuid: beer.uuid)
+        parent.beerSelected(uuid: beer.uuid) 
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

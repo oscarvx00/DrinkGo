@@ -38,10 +38,11 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "manufacturersCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "manufacturersCell", for: indexPath) as! ManufacturersTableViewCell
         
         let manufacturer = manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row]
-        cell.textLabel?.text = manufacturer.name
+        cell.cellLabel?.text = manufacturer.name
+        cell.cellImageView?.image = manufacturer.logoImage
         
         return cell
     }

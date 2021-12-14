@@ -17,14 +17,16 @@ class ManufacturersTableDTO{
     init(manufacturer : Manufacturer){
         self.uuid = manufacturer.uuid
         self.name = manufacturer.name
-        self.logoImage = UIImage(contentsOfFile: manufacturer.logoImageName)
+        //LOAD IMAGE
+        do{
+            let documentsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+
+            
+            let imagePath = documentsDir.appendingPathComponent("images", isDirectory: true).appendingPathComponent(manufacturer.logoImageName)
+            
+            self.logoImage = UIImage(contentsOfFile: imagePath.path)
+        } catch{
+            self.logoImage = nil
+        }
     }
-    
-    //TEST METHOD
-    init(name : String){
-        uuid = UUID()
-        self.name = name
-        self.logoImage = nil
-    }
-    
 }

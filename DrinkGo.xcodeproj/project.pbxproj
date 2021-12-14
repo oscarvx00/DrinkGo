@@ -16,7 +16,6 @@
 		55D6EAF5276178A30053A704 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF3276178A30053A704 /* Main.storyboard */; };
 		55D6EAF7276178A40053A704 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF6276178A40053A704 /* Assets.xcassets */; };
 		55D6EAFA276178A40053A704 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55D6EAF8276178A40053A704 /* LaunchScreen.storyboard */; };
-		55D8B4692762A7FD008FE530 /* ManufacturersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */; };
 		55D8B46B2762AA2C008FE530 /* ManufacturersTableDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D8B46A2762AA2C008FE530 /* ManufacturersTableDTO.swift */; };
 		55E2589727638AE400A08D1F /* ManufacturerDetailPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2589627638AE400A08D1F /* ManufacturerDetailPickerViewAdapter.swift */; };
 		55E2589927639EDA00A08D1F /* ManufacturerDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E2589827639EDA00A08D1F /* ManufacturerDTO.swift */; };
@@ -50,7 +49,6 @@
 		55D6EAF6276178A40053A704 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55D6EAF9276178A40053A704 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55D6EAFB276178A40053A704 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersTableViewCell.swift; sourceTree = "<group>"; };
 		55D8B46A2762AA2C008FE530 /* ManufacturersTableDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturersTableDTO.swift; sourceTree = "<group>"; };
 		55E2589627638AE400A08D1F /* ManufacturerDetailPickerViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerDetailPickerViewAdapter.swift; sourceTree = "<group>"; };
 		55E2589827639EDA00A08D1F /* ManufacturerDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerDTO.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			children = (
 				55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */,
 				55FFE8A02762A265006C2EB9 /* ManufacturersTableViewAdapter.swift */,
-				55D8B4682762A7FD008FE530 /* ManufacturersTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -375,7 +372,6 @@
 				55E2589B27639F2700A08D1F /* BeerTableDTO.swift in Sources */,
 				550087A02762EC4000918CA8 /* ManufacturerDetailViewModel.swift in Sources */,
 				55E5398D276580AE0077E38E /* BeerDetailViewController.swift in Sources */,
-				55D8B4692762A7FD008FE530 /* ManufacturersTableViewCell.swift in Sources */,
 				5500879E2762EB9800918CA8 /* ManufacturerDetailViewController.swift in Sources */,
 				55E53993276589690077E38E /* BeerDTO.swift in Sources */,
 				55FFE89D276292DC006C2EB9 /* DatabaseConfigProtocol.swift in Sources */,

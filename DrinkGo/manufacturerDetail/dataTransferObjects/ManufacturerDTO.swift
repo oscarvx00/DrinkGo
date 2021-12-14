@@ -15,20 +15,17 @@ class ManufacturerDTO{
     var name : String
     var type : ManufacturerType
     var logoImage : UIImage?
-    var logoImageName : String
     var beers : [BeerTableDTO]
     
     init(manufacturer : Manufacturer){
         self.uuid = manufacturer.uuid
         self.name = manufacturer.name
         self.type = manufacturer.type
-        self.logoImageName = manufacturer.logoImageName
         self.beers = manufacturer.beerList.map{
             return BeerTableDTO(beer: $0)
         }
          
         //LOAD IMAGE
-        
         do{
             let documentsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
 
@@ -40,6 +37,4 @@ class ManufacturerDTO{
             self.logoImage = nil
         }
     }
-    
-    
 }

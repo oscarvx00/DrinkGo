@@ -69,3 +69,10 @@ class ManufacturersViewController: UIViewController, ManufacturersTableProtocol 
     
 }
 
+class ManufacturersTableViewCell : UITableViewCell{
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var cellLabel: UILabel!
+    
+    
+}
+

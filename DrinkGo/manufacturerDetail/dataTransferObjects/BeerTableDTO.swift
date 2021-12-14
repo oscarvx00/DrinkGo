@@ -20,7 +20,16 @@ class BeerTableDTO{
         self.uuid = beer.uuid
         self.type = beer.type
         self.name = beer.name
-        self.image = UIImage(contentsOfFile: beer.imageName)
+       
+        //LOAD IMAGE
+        do{
+            let documentsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let imagePath = documentsDir.appendingPathComponent("images", isDirectory: true).appendingPathComponent(beer.imageName)
+            
+            self.image = UIImage(contentsOfFile: imagePath.path)
+        } catch{
+            self.image = nil
+        }
     }
     
 }

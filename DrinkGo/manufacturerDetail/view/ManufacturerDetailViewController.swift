@@ -103,10 +103,7 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     }
     
     func beerSelected(uuid: UUID) {
-        var uuids = [UUID]()
-        uuids.append(uuid)
-        uuids.append(viewModel.manufacturer.uuid)
-        self.performSegue(withIdentifier: BEER_DETAIL_SEGUE_ID, sender: uuids)
+        self.performSegue(withIdentifier: BEER_DETAIL_SEGUE_ID, sender: uuid)
     }
     
     func deleteBeer(uuid: UUID) {
@@ -137,10 +134,10 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == BEER_DETAIL_SEGUE_ID{
-            guard let uuid = sender as? [UUID] else {return}
+            guard let uuid = sender as? UUID else {return}
             let bdvc = segue.destination as! BeerDetailViewController
-            bdvc.selectedManufacturerUUID = uuid[0]
-            bdvc.selectedBeerUUID = uuid[1]
+            bdvc.selectedManufacturerUUID = viewModel.manufacturer.uuid
+            bdvc.selectedBeerUUID = uuid
         }
     }
     
@@ -156,5 +153,13 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         }
         dismiss(animated: true, completion: nil)
     }
+}
+
+class ManufacturerBeersTableViewCell : UITableViewCell{
+    
+    
+    @IBOutlet weak var cellImageView: UIImageView!
+    @IBOutlet weak var cellLabel: UILabel!
+    
 }
 

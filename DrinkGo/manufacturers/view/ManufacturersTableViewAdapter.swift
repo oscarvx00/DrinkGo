@@ -25,7 +25,7 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
         
         manufacturers = [ManufacturerType : [ManufacturersTableDTO]]()
         manufacturers[ManufacturerType.NATIONAL] = [ManufacturersTableDTO]()
-        manufacturers[ManufacturerType.INTERNATIONAL] = [ManufacturersTableDTO]()
+        manufacturers[ManufacturerType.IMPORTED] = [ManufacturersTableDTO]()
     }
     
     

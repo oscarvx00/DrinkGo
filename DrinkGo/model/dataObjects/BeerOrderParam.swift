@@ -15,9 +15,9 @@ enum BeerOrderParam : CaseIterable{
     
     var value : String{
         switch self{
-        case .NAME: return "Name"
+        case .NAME: return "Nombre"
         case .ALCOHOL: return "Alcohol"
-        case .ENERGY: return "Energy"
+        case .ENERGY: return "Calorias"
         }
     }
 }

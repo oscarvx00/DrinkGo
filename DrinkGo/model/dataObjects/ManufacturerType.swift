@@ -10,12 +10,12 @@ import Foundation
 
 enum ManufacturerType : CaseIterable, Codable{
     case NATIONAL
-    case INTERNATIONAL
+    case IMPORTED
     
     var header : String {
         switch self{
-        case .NATIONAL: return "National"
-        case .INTERNATIONAL : return "International"
+        case .NATIONAL: return "Nacional"
+        case .IMPORTED : return "Importada"
         }
     }
 }

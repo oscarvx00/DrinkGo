@@ -22,7 +22,7 @@ class ManufacturersViewModel{
         
         var map = [ManufacturerType : [ManufacturersTableDTO]]()
         map[ManufacturerType.NATIONAL] = []
-        map[ManufacturerType.INTERNATIONAL] = []
+        map[ManufacturerType.IMPORTED] = []
         
         for manufacturer in manufacturers{
             map[manufacturer.type]?.append(ManufacturersTableDTO(manufacturer: manufacturer))

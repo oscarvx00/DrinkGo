@@ -113,11 +113,16 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     private func saveState(){
         var name = nameTextField.text
         let type = selectedManufacturerType
+        var image = imageView.image
         
         if(name != nil && name!.isEmpty){
             name = "NO NAME"
         }
-        viewModel.updateManufacturer(name: name!, type: type, image: imageView.image)
+        
+        if image == UIImage(systemName: "camera"){
+            image = nil
+        }
+        viewModel.updateManufacturer(name: name!, type: type, image: image)
     }
     
     @IBAction func addBeerClicked(_ sender: Any) {

@@ -32,7 +32,7 @@ class ManufacturerDetailViewModel {
     
     func addBeer() -> BeerTableDTO{
         let beer  = manufacturerDetailDAO.insertEmptyBeerToManufacturer(manufacturerUUID: manufacturer.uuid)
-        manufacturer.beerList.append(beer)
+        //manufacturer.beerList.append(beer)
         return BeerTableDTO(beer: beer)
     }
     

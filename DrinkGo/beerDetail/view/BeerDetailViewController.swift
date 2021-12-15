@@ -45,7 +45,9 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
         typeTextField.text = beer.type
         alcoholTextField.text = String(format: "%.2f", beer.alcoholGraduation)
         energyTextField.text = String(format: "%.2f", beer.energy)
-        imageView.image = beer.image
+        if beer.image != nil{
+            imageView.image = beer.image
+        }
     }
     
     private func saveState(){
@@ -53,6 +55,7 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
         let type = typeTextField.text
         var alcohol : Float? = Float(alcoholTextField.text!)
         var energy : Float? = Float(energyTextField.text!)
+        var image = imageView.image
         
         if alcohol == nil{
             alcohol = 0.0
@@ -61,7 +64,11 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
             energy = 0.0
         }
         
-        viewModel.updateBeer(name: name!, type: type!, alcohol: alcohol!, energy: energy!, image: imageView.image)
+        if image == UIImage(systemName: "camera"){
+            image = nil
+        }
+        
+        viewModel.updateBeer(name: name!, type: type!, alcohol: alcohol!, energy: energy!, image: image)
     }
     
     @IBAction func saveClicked(_ sender: Any) {

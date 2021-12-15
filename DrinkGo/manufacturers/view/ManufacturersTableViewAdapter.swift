@@ -42,7 +42,9 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
         
         let manufacturer = manufacturers[Array(manufacturers.keys)[indexPath.section]]![indexPath.row]
         cell.cellLabel?.text = manufacturer.name
-        cell.cellImageView?.image = manufacturer.logoImage
+        if manufacturer.logoImage != nil{
+            cell.cellImageView?.image = manufacturer.logoImage
+        }
         
         return cell
     }

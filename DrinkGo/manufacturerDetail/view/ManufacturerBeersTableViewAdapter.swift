@@ -37,7 +37,9 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
         
         let beer = beers[indexPath.row]
         cell.cellLabel?.text = beer.name
-        cell.cellImageView?.image = beer.image
+        if beer.image != nil{
+            cell.cellImageView?.image = beer.image
+        }
         
         return cell
     }

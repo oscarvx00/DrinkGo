@@ -16,26 +16,27 @@ protocol ManufacturerBeerTableProtocol{
 
 class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITableViewDataSource{
     
-    var beers = [BeerTableDTO]()
+    var beers = [BeerType: [BeerTableDTO]]()
     
     let parent : ManufacturerBeerTableProtocol
     
     init(parent : ManufacturerBeerTableProtocol){
         self.parent = parent
+        beers[BeerType.OTHER] = [BeerTableDTO]()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beers.count
+        return beers[Array(beers.keys)[section]]!.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return Array(beers.keys).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "manufacturerBeerCell", for: indexPath) as! ManufacturerBeersTableViewCell
         
-        let beer = beers[indexPath.row]
+        let beer = beers[Array(beers.keys)[indexPath.section]]![indexPath.row]
         cell.cellLabel?.text = beer.name
         if beer.image != nil{
             cell.cellImageView?.image = beer.image
@@ -45,7 +46,7 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let beer = beers[indexPath.row]
+        let beer = beers[Array(beers.keys)[indexPath.section]]![indexPath.row]
         
         parent.beerSelected(uuid: beer.uuid) 
     }
@@ -54,10 +55,14 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
         return true
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return Array(beers.keys)[section].header
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == .delete){
-            let uuid = beers[indexPath.row].uuid
-            beers.remove(at: indexPath.row)
+            let uuid = beers[Array(beers.keys)[indexPath.section]]![indexPath.row].uuid
+            beers[Array(beers.keys)[indexPath.section]]!.remove(at: indexPath.row)
             tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.endUpdates()

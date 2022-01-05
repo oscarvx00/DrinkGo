@@ -15,14 +15,23 @@ class ManufacturerDTO{
     var name : String
     var type : ManufacturerType
     var logoImage : UIImage?
-    var beers : [BeerTableDTO]
+    var beers : [BeerType :[BeerTableDTO]]
     
     init(manufacturer : Manufacturer){
         self.uuid = manufacturer.uuid
         self.name = manufacturer.name
         self.type = manufacturer.type
-        self.beers = manufacturer.beerList.map{
-            return BeerTableDTO(beer: $0)
+        self.beers = [BeerType : [BeerTableDTO]]()
+        
+        for manBeer in manufacturer.beerList{
+            if beers[manBeer.type] == nil {
+                beers[manBeer.type] = []
+            }
+            self.beers[manBeer.type]?.append(BeerTableDTO(beer: manBeer))
+        }
+        
+        if self.beers[BeerType.OTHER] == nil{
+            self.beers[BeerType.OTHER] = []
         }
          
         //LOAD IMAGE

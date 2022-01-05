@@ -10,6 +10,8 @@
 		5500879E2762EB9800918CA8 /* ManufacturerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5500879D2762EB9800918CA8 /* ManufacturerDetailViewController.swift */; };
 		550087A02762EC4000918CA8 /* ManufacturerDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5500879F2762EC4000918CA8 /* ManufacturerDetailViewModel.swift */; };
 		550087A22762EC7700918CA8 /* ManufacturerDetailDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550087A12762EC7700918CA8 /* ManufacturerDetailDAO.swift */; };
+		55075AC0278620FA00B01E9E /* BeerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55075ABF278620FA00B01E9E /* BeerType.swift */; };
+		55075AC2278638AC00B01E9E /* BeerDetailPickerViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55075AC1278638AC00B01E9E /* BeerDetailPickerViewAdapter.swift */; };
 		55D6EAEE276178A30053A704 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAED276178A30053A704 /* AppDelegate.swift */; };
 		55D6EAF0276178A30053A704 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAEF276178A30053A704 /* SceneDelegate.swift */; };
 		55D6EAF2276178A30053A704 /* ManufacturersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D6EAF1276178A30053A704 /* ManufacturersViewController.swift */; };
@@ -41,6 +43,8 @@
 		5500879D2762EB9800918CA8 /* ManufacturerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerDetailViewController.swift; sourceTree = "<group>"; };
 		5500879F2762EC4000918CA8 /* ManufacturerDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerDetailViewModel.swift; sourceTree = "<group>"; };
 		550087A12762EC7700918CA8 /* ManufacturerDetailDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManufacturerDetailDAO.swift; sourceTree = "<group>"; };
+		55075ABF278620FA00B01E9E /* BeerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerType.swift; sourceTree = "<group>"; };
+		55075AC1278638AC00B01E9E /* BeerDetailPickerViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerDetailPickerViewAdapter.swift; sourceTree = "<group>"; };
 		55D6EAEA276178A20053A704 /* DrinkGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrinkGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55D6EAED276178A30053A704 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55D6EAEF276178A30053A704 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				55E5398C276580AE0077E38E /* BeerDetailViewController.swift */,
+				55075AC1278638AC00B01E9E /* BeerDetailPickerViewAdapter.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				55FFE8962762900C006C2EB9 /* ManufacturerType.swift */,
 				55FFE898276291B5006C2EB9 /* Beer.swift */,
 				55FFE89A27629292006C2EB9 /* BeerOrderParam.swift */,
+				55075ABF278620FA00B01E9E /* BeerType.swift */,
 			);
 			path = dataObjects;
 			sourceTree = "<group>";
@@ -360,6 +366,7 @@
 				55F59B77276423ED0030E82D /* ManufacturerBeersTableViewAdapter.swift in Sources */,
 				55FFE89327628F50006C2EB9 /* ManufacturersDAO.swift in Sources */,
 				55FFE89F27629330006C2EB9 /* DatabaseManager.swift in Sources */,
+				55075AC0278620FA00B01E9E /* BeerType.swift in Sources */,
 				550087A22762EC7700918CA8 /* ManufacturerDetailDAO.swift in Sources */,
 				55D6EAF2276178A30053A704 /* ManufacturersViewController.swift in Sources */,
 				55D8B46B2762AA2C008FE530 /* ManufacturersTableDTO.swift in Sources */,
@@ -369,6 +376,7 @@
 				55E2589727638AE400A08D1F /* ManufacturerDetailPickerViewAdapter.swift in Sources */,
 				55D6EAEE276178A30053A704 /* AppDelegate.swift in Sources */,
 				55E5398F276580D60077E38E /* BeerDetailViewModel.swift in Sources */,
+				55075AC2278638AC00B01E9E /* BeerDetailPickerViewAdapter.swift in Sources */,
 				55E2589B27639F2700A08D1F /* BeerTableDTO.swift in Sources */,
 				550087A02762EC4000918CA8 /* ManufacturerDetailViewModel.swift in Sources */,
 				55E5398D276580AE0077E38E /* BeerDetailViewController.swift in Sources */,

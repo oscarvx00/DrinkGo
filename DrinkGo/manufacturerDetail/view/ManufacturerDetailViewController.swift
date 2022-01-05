@@ -97,7 +97,7 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
         }
     }
     
-    private func configureBeersListUI(data : [BeerTableDTO]){
+    private func configureBeersListUI(data : [BeerType : [BeerTableDTO]]){
         tableAdapter.beers = data
         beersTableView.reloadData()
     }
@@ -127,9 +127,13 @@ class ManufacturerDetailViewController : UIViewController, ManufacturerDetailPic
     
     @IBAction func addBeerClicked(_ sender: Any) {
         let beer = viewModel.addBeer()
-        tableAdapter.beers.append(beer)
+        if tableAdapter.beers[beer.type] == nil{
+            tableAdapter.beers[beer.type] = []
+        }
+        tableAdapter.beers[beer.type]!.append(beer)
+        let sectionIndex : Int = Array(tableAdapter.beers.keys).firstIndex(of: beer.type)!
         beersTableView.beginUpdates()
-        beersTableView.insertRows(at: [IndexPath.init(row: tableAdapter.beers.count-1, section: 0)], with: .right)
+        beersTableView.insertRows(at: [IndexPath.init(row: tableAdapter.beers[beer.type]!.count-1, section: sectionIndex)], with: .right)
         beersTableView.endUpdates()
     }
     

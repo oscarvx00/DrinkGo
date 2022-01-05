@@ -142,7 +142,7 @@ class DatabaseManager : DatabaseConfigProtocol, ManufacturersDAO, ManufacturerDe
     }
 
     func insertEmptyBeerToManufacturer(manufacturerUUID: UUID) -> Beer {
-        let beer = Beer(name: "Name...", type: "Type...")
+        let beer = Beer(name: "Name...", type: BeerType.OTHER)
         if let index = manufacturers.firstIndex(where: {$0.uuid == manufacturerUUID}){
             manufacturers[index].beerList.append(beer)
         }

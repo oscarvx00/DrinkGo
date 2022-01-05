@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 
-class BeerDetailViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class BeerDetailViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, BeerDetailPickerViewAdapterProtocol{
     
     var selectedManufacturerUUID : UUID!
     var selectedBeerUUID : UUID!
@@ -23,6 +23,11 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var alcoholTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     
+    let beerTypePickerView = UIPickerView()
+    var beerTypePickerAdapter : BeerDetailPickerViewAdapter!
+    
+    var selectedBeerType = BeerType.OTHER
+    
     override func loadView() {
         super.loadView()
         
@@ -33,6 +38,12 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
         //imagePicker.allowsEditing = false
+        
+        beerTypePickerAdapter = BeerDetailPickerViewAdapter(parent: self)
+        beerTypePickerView.delegate = beerTypePickerAdapter
+        beerTypePickerView.dataSource = beerTypePickerAdapter
+        
+        typeTextField.inputView = beerTypePickerView
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,7 +53,8 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
     
     private func configureBeerUI(beer : BeerDTO){
         nameTextField.text = beer.name
-        typeTextField.text = beer.type
+        typeTextField.text = beer.type.header
+        selectedBeerType = beer.type
         alcoholTextField.text = String(format: "%.2f", beer.alcoholGraduation)
         energyTextField.text = String(format: "%.2f", beer.energy)
         if beer.image != nil{
@@ -52,7 +64,7 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
     
     private func saveState(){
         let name = nameTextField.text
-        let type = typeTextField.text
+        let type = selectedBeerType
         var alcohol : Float? = Float(alcoholTextField.text!)
         var energy : Float? = Float(energyTextField.text!)
         var image = imageView.image
@@ -68,7 +80,7 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
             image = nil
         }
         
-        viewModel.updateBeer(name: name!, type: type!, alcohol: alcohol!, energy: energy!, image: image)
+        viewModel.updateBeer(name: name!, type: type, alcohol: alcohol!, energy: energy!, image: image)
     }
     
     @IBAction func saveClicked(_ sender: Any) {
@@ -92,5 +104,11 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
             imageView.image = image
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func optionSelected(obj: BeerType) {
+        typeTextField.text = obj.header
+        typeTextField.resignFirstResponder()
+        selectedBeerType = obj
     }
 }

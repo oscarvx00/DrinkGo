@@ -40,6 +40,8 @@ class ManufacturerBeersTableViewAdapter : NSObject, UITableViewDelegate, UITable
         cell.cellLabel?.text = beer.name
         if beer.image != nil{
             cell.cellImageView?.image = beer.image
+        } else{
+            cell.cellImageView?.image = UIImage(systemName: "camera")
         }
         
         return cell

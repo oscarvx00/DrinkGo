@@ -63,6 +63,7 @@ class BeerDetailViewController : UIViewController, UIImagePickerControllerDelega
     }
     
     private func saveState(){
+        
         let name = nameTextField.text
         let type = selectedBeerType
         var alcohol : Float? = Float(alcoholTextField.text!)

@@ -44,6 +44,8 @@ class ManufacturersTableViewAdapter : NSObject, UITableViewDataSource, UITableVi
         cell.cellLabel?.text = manufacturer.name
         if manufacturer.logoImage != nil{
             cell.cellImageView?.image = manufacturer.logoImage
+        } else{
+            cell.cellImageView?.image = UIImage(systemName: "camera")
         }
         
         return cell

@@ -13,7 +13,7 @@ class BeerDTO{
     
     var uuid : UUID
     var name : String
-    var type : String
+    var type : BeerType
     var image : UIImage?
     var alcoholGraduation : Float
     var energy : Float

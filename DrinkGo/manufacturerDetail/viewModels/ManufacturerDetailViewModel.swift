@@ -43,10 +43,13 @@ class ManufacturerDetailViewModel {
         manufacturerDetailDAO.deleteBeer(beerUUID: uuid, manufacturerUUID: manufacturer.uuid)
     }
     
-    func orderBeersBy(orderParam : BeerOrderParam) -> [BeerTableDTO]{
+    func orderBeersBy(orderParam : BeerOrderParam) -> [BeerType: [BeerTableDTO]]{
         
         let beerList = manufacturer.beerList
+        var dict = [BeerType : [BeerTableDTO]]()
         var sortedList : [Beer]!
+        
+        //Add all items to dictionary
         
         switch orderParam {
         case .NAME:
@@ -57,8 +60,18 @@ class ManufacturerDetailViewModel {
             sortedList = beerList.sorted(by: {$0.energy < $1.energy})
         }
         
-        return sortedList.map({return BeerTableDTO(beer: $0)})
+        for beer in sortedList{
+            if dict[beer.type] == nil{
+                dict[beer.type] = []
+            }
+            dict[beer.type]?.append(BeerTableDTO(beer: beer))
+        }
         
+        if dict[BeerType.OTHER] == nil{
+            dict[BeerType.OTHER] = []
+        }
+        
+        return dict
     }
     
 }

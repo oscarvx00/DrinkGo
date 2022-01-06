@@ -13,7 +13,7 @@ class BeerTableDTO{
     
     var uuid : UUID
     var name : String
-    var type : String
+    var type : BeerType
     var image : UIImage?
     
     init(beer : Beer){
